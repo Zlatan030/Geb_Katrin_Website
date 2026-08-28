@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[EVENT NAME] — Festival</title>
+  <meta name="description" content="[EVENT NAME] · 27.03. · Hafenbahnhof Altona, Hamburg" />
+
+  <!-- Google Fonts: Fraunces (Display/Headlines, inkl. Italic) + Work Sans (Fließtext/UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ================= HEADER / NAV ================= -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="#top" class="site-header__mark">[EVENT NAME]</a>
+      <a href="#tickets" class="site-header__cta">Tickets</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ================= 1. HERO ================= -->
+    <section class="hero" id="hero" aria-label="Startbereich">
+      <div class="hero__frame reveal">
+        <!--
+          HERO-ARTWORK
+          Das Poster-Artwork ist die visuelle Startseite der Website.
+          Datei liegt unter: images/hero-poster.jpg
+          Später einfach durch eine neue Datei mit demselben Namen ersetzen,
+          sobald es ein finales Artwork gibt.
+        -->
+        <img
+          class="hero__art"
+          src="images/hero-poster.jpg"
+          alt="[EVENT NAME] — Festival Artwork"
+          width="1080"
+          height="1080"
+        />
+        <span class="hero__ring" aria-hidden="true"></span>
+      </div>
+
+      <div class="hero__details reveal">
+        <ul class="hero__meta">
+          <li><span class="eyebrow">Datum</span><span class="hero__meta-value">27.03.</span></li>
+          <li><span class="eyebrow">Uhrzeit</span><span class="hero__meta-value">18:00</span></li>
+          <li><span class="eyebrow">Location</span><span class="hero__meta-value">Hafenbahnhof Altona</span></li>
+        </ul>
+
+        <a href="#tickets" class="btn btn--primary hero__cta">
+          Tickets sichern
+          <span class="btn__arrow" aria-hidden="true">↓</span>
+        </a>
+      </div>
+
+      <div class="hero__scroll-hint" aria-hidden="true">
+        <span></span>
+      </div>
+    </section>
+
+    <!-- ================= 2. WANN ================= -->
+    <section class="section section--dark" id="wann" aria-labelledby="wann-heading">
+      <div class="section__inner">
+        <p class="eyebrow eyebrow--on-dark reveal">Save the date</p>
+        <h2 id="wann-heading" class="section__heading section__heading--huge reveal">Wann</h2>
+        <p class="date-display reveal">
+          27.03. <span class="date-display__divider">·</span> Samstag <span class="date-display__divider">·</span> 18:00 Uhr
+        </p>
+        <p class="section__note reveal">Hamburg. Mehr wird an diesem Abend nicht verraten.</p>
+      </div>
+    </section>
+
+    <!-- ================= 3. LINE UP ================= -->
+    <section class="section section--light" id="lineup" aria-labelledby="lineup-heading">
+      <div class="section__inner">
+        <p class="eyebrow reveal">Line up</p>
+        <h2 id="lineup-heading" class="section__heading reveal">Line Up</h2>
+
+        <div class="lineup-badge reveal">
+          <span class="lineup-badge__star" aria-hidden="true">✦</span>
+          <span class="lineup-badge__text">To Be Announced</span>
+          <span class="lineup-badge__star" aria-hidden="true">✦</span>
+        </div>
+
+        <!--
+          LINE-UP ERWEITERN:
+          Sobald Artists feststehen, <ul class="lineup-list"> einkommentieren
+          und den lineup-badge Block oben entfernen oder ausblenden.
+
+          <ul class="lineup-list">
+            <li class="lineup-list__item">
+              <span class="lineup-list__index">01</span>
+              <span class="lineup-list__name">Artist 01</span>
+            </li>
+            <li class="lineup-list__item">
+              <span class="lineup-list__index">02</span>
+              <span class="lineup-list__name">Artist 02</span>
+            </li>
+            <li class="lineup-list__item">
+              <span class="lineup-list__index">03</span>
+              <span class="lineup-list__name">Artist 03</span>
+            </li>
+          </ul>
+        -->
+      </div>
+    </section>
+
+    <!-- ================= 4. LOCATION ================= -->
+    <section class="section section--dark" id="location" aria-labelledby="location-heading">
+      <div class="section__inner">
+        <p class="eyebrow eyebrow--on-dark reveal">Location</p>
+        <h2 id="location-heading" class="section__heading section__heading--on-dark reveal">Hafenbahnhof Altona</h2>
+
+        <div class="image-placeholder reveal">
+          <!--
+            LOCATION-BILDER EINFÜGEN:
+            <img> Tag(s) hier einsetzen, z. B.:
+            <img src="images/location-01.jpg" alt="Hafenbahnhof Altona" class="image-placeholder__img">
+            Mehrere Bilder können in .image-placeholder als Grid ergänzt werden.
+          -->
+          <span class="image-placeholder__label">[BILDER KOMMEN NOCH]</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5. TICKETS ================= -->
+    <section class="section section--light section--tickets" id="tickets" aria-labelledby="tickets-heading">
+      <div class="section__inner">
+        <p class="eyebrow reveal">Get in</p>
+        <h2 id="tickets-heading" class="section__heading reveal">Tickets</h2>
+
+        <p class="ticket-price reveal">[TICKETPREIS KOMMT NOCH]</p>
+        <p class="ticket-text reveal">[TEXT ZU DEN TICKETS KOMMT NOCH]</p>
+
+        <!--
+          PAYPAL-LINK:
+          Href unten durch den echten PayPal Payment Link ersetzen.
+        -->
+        <a
+          href="YOUR_PAYPAL_LINK_HERE"
+          class="btn btn--primary btn--large reveal"
+          target="_blank"
+          rel="noopener"
+        >
+          <!-- HIER DEN ECHTEN PAYPAL PAYMENT LINK EINTRAGEN -->
+          Ticket / PayPal
+        </a>
+
+        <div class="charity-note reveal">
+          <!--
+            VIVA CON AGUA LOGO EINFÜGEN:
+            <img src="images/viva-con-agua-logo.png" alt="Viva con Agua" class="charity-note__logo">
+            anstelle des Platzhalter-Textes unten einsetzen.
+          -->
+          <span class="charity-note__logo-placeholder">[VIVA CON AGUA LOGO]</span>
+          <p class="charity-note__text">Die Erlöse werden an Viva con Agua gespendet.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 6. ANREISE ================= -->
+    <section class="section section--dark" id="anreise" aria-labelledby="anreise-heading">
+      <div class="section__inner">
+        <p class="eyebrow eyebrow--on-dark reveal">Getting there</p>
+        <h2 id="anreise-heading" class="section__heading section__heading--on-dark reveal">Anreise</h2>
+
+        <div class="anreise-grid">
+          <div class="anreise-card reveal">
+            <h3 class="anreise-card__title">ÖPNV</h3>
+            <p class="anreise-card__text">[Informationen zur Anreise mit Bus &amp; Bahn folgen.]</p>
+          </div>
+          <div class="anreise-card reveal">
+            <h3 class="anreise-card__title">Auto</h3>
+            <p class="anreise-card__text">[Informationen zur Anreise mit dem Auto &amp; Parken folgen.]</p>
+          </div>
+          <div class="anreise-card reveal">
+            <h3 class="anreise-card__title">Hotel Empfehlung</h3>
+            <p class="anreise-card__text">[Hotelempfehlung folgt in Kürze.]</p>
+          </div>
+        </div>
+
+        <!--
+          ROUTE-BUTTON (optional):
+          Href unten durch den echten Google-Maps-Link ersetzen, dann
+          class="anreise-route is-hidden" das "is-hidden" entfernen.
+        -->
+        <a
+          href="YOUR_MAP_LINK_HERE"
+          class="btn btn--ghost anreise-route is-hidden reveal"
+          target="_blank"
+          rel="noopener"
+        >
+          Route öffnen
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__event">[EVENT NAME]</p>
+      <p class="site-footer__meta">27.03. · Hafenbahnhof Altona</p>
+      <p class="site-footer__tagline">See you there.</p>
+
+      <div class="site-footer__legal">
+        <!-- Platzhalter — später mit echtem Text füllen -->
+        <a href="#" class="site-footer__legal-link">Impressum</a>
+        <span aria-hidden="true">·</span>
+        <a href="#" class="site-footer__legal-link">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Kleine, sinnvolle Funktion: sanftes Einblenden von Inhalten beim Scrollen.
+    // Kein Framework, keine externen Abhängigkeiten.
+    (function () {
+      var items = document.querySelectorAll('.reveal');
+
+      if (!('IntersectionObserver' in window) || items.length === 0) {
+        items.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      items.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
+
+</body>
+</html>

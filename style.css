@@ -1,0 +1,634 @@
+/* ==========================================================================
+   [EVENT NAME] — Festival Website
+   Palette & Typografie orientieren sich am Poster-Artwork (images/hero-poster.jpg):
+   warmes Creme/Papier, tiefes Anthrazit, gedecktes Gold.
+   ========================================================================== */
+
+:root {
+  /* --- Farben (aus dem Artwork abgeleitet) --- */
+  --color-cream:        #f1e8d3;   /* Papier-Hintergrund, wie im Artwork */
+  --color-cream-soft:   #f8f2e5;   /* helle Karten/Flächen auf Creme */
+  --color-ink:          #211d17;   /* tiefes Anthrazit/Schwarz, wie die Linienzeichnung */
+  --color-ink-soft:     #322c22;   /* zweite dunkle Fläche, etwas wärmer */
+  --color-gold:         #a9863f;   /* Gold-Ton wie "ELSE" im Artwork */
+  --color-gold-light:   #cbab6e;   /* helleres Gold für Hover/Glanz */
+  --color-line:         rgba(33, 29, 23, 0.22);   /* Haarlinie auf Creme */
+  --color-line-dark:    rgba(241, 232, 211, 0.22); /* Haarlinie auf Dunkel */
+
+  /* --- Typografie --- */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Work Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* --- Abstände / Layout --- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 7rem;
+  --max-width: 1180px;
+  --radius: 2px;
+
+  color-scheme: light;
+}
+
+/* ==========================================================================
+   Reset
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Sichtbarer Fokus-Zustand für Tastaturnutzung */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Wiederkehrende Bausteine
+   ========================================================================== */
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--space-sm);
+}
+
+.eyebrow--on-dark {
+  color: var(--color-gold-light);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 1em 2em;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.btn--primary {
+  background-color: var(--color-ink);
+  color: var(--color-cream);
+  border-color: var(--color-ink);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-ink);
+  transform: translateY(-2px);
+}
+
+.btn--large {
+  padding: 1.1em 2.6em;
+  font-size: 1rem;
+}
+
+.btn--ghost {
+  background-color: transparent;
+  color: var(--color-cream);
+  border-color: var(--color-line-dark);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-gold-light);
+  color: var(--color-gold-light);
+  transform: translateY(-2px);
+}
+
+.btn__arrow {
+  transition: transform 0.25s ease;
+}
+
+.btn--primary:hover .btn__arrow {
+  transform: translateY(3px);
+}
+
+.is-hidden {
+  display: none;
+}
+
+/* Scroll-Reveal: dezentes Einblenden */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: rgba(241, 232, 211, 0.86);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.site-header__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-header__mark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.site-header__cta {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.6em 1.2em;
+  border: 1px solid var(--color-ink);
+  border-radius: var(--radius);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.site-header__cta:hover {
+  background-color: var(--color-ink);
+  color: var(--color-cream);
+}
+
+/* ==========================================================================
+   Hero — das Artwork ist die Startseite
+   ========================================================================== */
+
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--space-xl) + var(--space-md)) var(--space-md) var(--space-lg);
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(169, 134, 63, 0.14), transparent 60%),
+    var(--color-cream);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__frame {
+  position: relative;
+  width: min(88vw, 460px);
+  margin-bottom: var(--space-lg);
+}
+
+.hero__art {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 30px 60px -25px rgba(33, 29, 23, 0.35);
+}
+
+.hero__ring {
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  border: 1px solid var(--color-line);
+  pointer-events: none;
+}
+
+.hero__details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.hero__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.hero__meta li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2em;
+}
+
+.hero__meta .eyebrow {
+  margin-bottom: 0;
+}
+
+.hero__meta-value {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.hero__cta {
+  margin-top: var(--space-xs);
+}
+
+.hero__scroll-hint {
+  position: absolute;
+  bottom: var(--space-md);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(to bottom, transparent, var(--color-ink) 70%);
+  overflow: hidden;
+}
+
+.hero__scroll-hint span {
+  display: block;
+  width: 1px;
+  height: 14px;
+  background-color: var(--color-gold);
+  animation: scrollHint 2.2s ease-in-out infinite;
+}
+
+@keyframes scrollHint {
+  0% { transform: translateY(-14px); opacity: 0; }
+  40% { opacity: 1; }
+  100% { transform: translateY(42px); opacity: 0; }
+}
+
+/* ==========================================================================
+   Generische Sektionen
+   ========================================================================== */
+
+.section {
+  padding: var(--space-xl) var(--space-md);
+}
+
+.section--light {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+}
+
+.section--dark {
+  background-color: var(--color-ink);
+  color: var(--color-cream);
+}
+
+.section__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section__heading {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-md);
+}
+
+.section__heading--on-dark {
+  color: var(--color-cream);
+}
+
+.section__heading--huge {
+  font-size: clamp(2.8rem, 11vw, 6rem);
+  margin-bottom: var(--space-lg);
+}
+
+.section__note {
+  font-style: italic;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--color-gold-light);
+  margin-top: var(--space-md);
+}
+
+/* --- WANN --- */
+
+.date-display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 4vw, 2.1rem);
+  color: var(--color-cream);
+  letter-spacing: 0.01em;
+}
+
+.date-display__divider {
+  color: var(--color-gold);
+  margin: 0 0.4em;
+}
+
+/* --- LINE UP --- */
+
+.lineup-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.1rem, 4vw, 1.6rem);
+  letter-spacing: 0.03em;
+}
+
+.lineup-badge__star {
+  color: var(--color-gold);
+  font-size: 0.9em;
+}
+
+.lineup-list {
+  margin-top: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.lineup-list__item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.lineup-list__index {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+}
+
+.lineup-list__name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+}
+
+/* --- LOCATION --- */
+
+.image-placeholder {
+  margin-top: var(--space-md);
+  border: 1px dashed var(--color-line-dark);
+  border-radius: var(--radius);
+  padding: var(--space-xl) var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+}
+
+.image-placeholder__label {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-line-dark);
+}
+
+.image-placeholder__img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+/* --- TICKETS --- */
+
+.section--tickets {
+  background-color: var(--color-cream-soft);
+}
+
+.ticket-price {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 5vw, 2.3rem);
+  font-weight: 500;
+  color: var(--color-gold);
+  margin-bottom: var(--space-sm);
+}
+
+.ticket-text {
+  max-width: 460px;
+  margin: 0 auto var(--space-lg);
+  color: var(--color-ink);
+  opacity: 0.75;
+}
+
+.charity-note {
+  margin-top: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.charity-note__logo-placeholder {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-line);
+  border: 1px dashed var(--color-line);
+  padding: 0.6em 1em;
+}
+
+.charity-note__logo {
+  height: 40px;
+  width: auto;
+}
+
+.charity-note__text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+/* --- ANREISE --- */
+
+.anreise-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  text-align: left;
+  margin-top: var(--space-lg);
+}
+
+.anreise-card {
+  border-top: 1px solid var(--color-line-dark);
+  padding-top: var(--space-sm);
+}
+
+.anreise-card__title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--color-gold-light);
+  margin-bottom: 0.4em;
+}
+
+.anreise-card__text {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.anreise-route {
+  display: inline-flex;
+  margin-top: var(--space-lg);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.site-footer {
+  background-color: var(--color-ink);
+  color: var(--color-cream);
+  padding: var(--space-lg) var(--space-md) var(--space-md);
+  text-align: center;
+  border-top: 1px solid var(--color-line-dark);
+}
+
+.site-footer__event {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+}
+
+.site-footer__meta {
+  margin-top: var(--space-xs);
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.site-footer__tagline {
+  margin-top: var(--space-sm);
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-gold-light);
+}
+
+.site-footer__legal {
+  margin-top: var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  font-size: 0.78rem;
+  opacity: 0.6;
+}
+
+.site-footer__legal-link:hover {
+  color: var(--color-gold-light);
+}
+
+/* ==========================================================================
+   Breakpoints
+   ========================================================================== */
+
+@media (min-width: 640px) {
+  .anreise-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero__meta {
+    flex-direction: row;
+    gap: var(--space-lg);
+  }
+}
+
+@media (min-width: 900px) {
+  :root {
+    font-size: 17px;
+  }
+
+  .section {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .hero__frame {
+    width: min(46vw, 520px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero__frame {
+    width: 560px;
+  }
+}
